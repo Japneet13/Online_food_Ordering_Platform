@@ -50,6 +50,10 @@ exports.postLogin = async (req, res) => {
 
     const user = results[0];
     const match = await bcrypt.compare(password, user.password);
+    console.log("🔍 Entered password:", password);
+    console.log("🔐 Hashed password from DB:", user.password);
+    console.log("✅ Passwords match:", match);
+
 
     if (!match) {
       console.log("❌ Invalid password");
