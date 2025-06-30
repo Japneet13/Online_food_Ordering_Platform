@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Orders | La Crosta</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <h1>📦 All Orders</h1>
+  <a href="/admin" class="btn">← Back to Dashboard</a>
+
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>User</th>
+        <th>Total Items</th>
+        <th>Total Price</th>
+        <th>Placed At</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% orders.forEach(order => { %>
+        <tr>
+          <td><%= order.order_id %></td>
+          <td><%= order.user_name || 'Guest' %></td>
+          <td><%= order.total_items %></td>
+          <td>₹<%= order.total_price %></td>
+          <td><%= order.placed_at.toLocaleString() %></td>
+          <td><a href="/admin/orders/<%= order.order_id %>">View</a></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>

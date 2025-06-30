@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>La Crosta | Our Menu</title>
+  <link rel="stylesheet" href="/css/menu.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <!-- 🔥 Themed Navbar -->
+<nav class="menu-navbar">
+  <div class="nav-logo">La Crosta 🍕</div>
+  <ul class="nav-links">
+    <li><a href="/" class="nav-link">🏠 Home</a></li>
+    <li><a href="/cart" class="nav-link">🛒 Cart</a></li>
+  </ul>
+</nav>
+
+<!-- 🍕 Pizza -->
+<section id="pizza" class="menu-section bg-charcoal left-image">
+  <a href="/menu/pizza" class="menu-link-wrapper">
+    <div class="intro-container">
+      <div class="intro-image">
+        <img src="/images/pizza-intro.jpg" alt="Wood-fired Margherita pizza slice with melting cheese" />
+      </div>
+      <div class="intro-tagline">
+        <h2 class="category-heading">Pizza</h2>
+        <h2>“Warning: This pizza is hotter than your last situationship — and twice as cheesy.” 🔥🧀🍕</h2>
+        <p>Our pizzas are wood-fired, hand-tossed, and layered with love (and mozzarella).</p>
+      </div>
+    </div>
+  </a>
+</section>
+
+<!-- 🍝 Pasta -->
+<section id="pasta" class="menu-section bg-maroon right-image">
+  <a href="/menu/pasta" class="menu-link-wrapper">
+    <div class="intro-container">
+      <div class="intro-tagline">
+        <h2 class="category-heading">Pasta</h2>
+        <h2>“Soft, saucy, and more emotionally available than whoever left you on ‘read’.” 🍝📱💔</h2>
+        <p>Saucy, swirly, and scientifically proven to make bad days better.</p>
+      </div>
+      <div class="intro-image">
+        <img src="/images/pasta-intro.jpg" alt="Pasta Dish">
+      </div>
+    </div>
+  </a>
+</section>
+
+<!-- 🧄 Garlic Breads -->
+<section id="garlic-breads" class="menu-section bg-olive left-image">
+  <a href="/menu/garlic-breads" class="menu-link-wrapper">
+    <div class="intro-container">
+      <div class="intro-image">
+        <img src="/images/garlicbread-intro.jpg" alt="Garlic Bread">
+      </div>
+      <div class="intro-tagline">
+        <h2 class="category-heading">Garlic Breads</h2>
+        <h2>“Garlic bread so good, it doesn’t need to ghost you to leave a lasting impression.” 🧄💅</h2>
+        <p>So golden and buttery, even vampires can't resist sneaking a bite.</p>
+      </div>
+    </div>
+  </a>
+</section>
+
+<!-- 🍟 Fries -->
+<section id="fries" class="menu-section bg-toast right-image">
+  <a href="/menu/fries" class="menu-link-wrapper">
+    <div class="intro-container">
+      <div class="intro-tagline">
+        <h2 class="category-heading">Fries</h2>
+        <h2>“If being extra were a snack — this would be it.” ✨</h2>
+        <p>Seasoned with sass. Crisped with class. Just bring the hunger.</p>
+      </div>
+      <div class="intro-image">
+        <img src="/images/fries-intro.jpg" alt="Fries">
+      </div>
+    </div>
+  </a>
+</section>
+
+<!-- 🥤 Beverages -->
+<section id="beverages" class="menu-section bg-navy left-image">
+  <a href="/menu/beverages" class="menu-link-wrapper">
+    <div class="intro-container">
+      <div class="intro-image">
+        <img src="/images/beverages-intro.jpg" alt="Drinks">
+      </div>
+      <div class="intro-tagline">
+        <h2 class="category-heading">Beverages</h2>
+        <h2>“Unlike your life decisions, these drinks actually refresh you.” 🥤😌</h2>
+        <p>Fizz, chill, and thrill — we’ve got beverages that burp and bless.</p>
+      </div>
+    </div>
+  </a>
+</section>
+
+<!-- 🥫 Dips & Sauces -->
+<section id="dips-sauces" class="menu-section bg-purple right-image">
+  <a href="/menu/dips-sauces" class="menu-link-wrapper">
+    <div class="intro-container">
+      <div class="intro-tagline">
+        <h2 class="category-heading">Dips & Sauces</h2>
+        <h2>“Made to elevate snacks — and your standards.” ✨</h2>
+        <p>Bold, creamy, spicy, cheeky — these dips bring more attitude than your ex.</p>
+      </div>
+      <div class="intro-image">
+        <img src="/images/dips-intro.jpg" alt="Dips and Sauces">
+      </div>
+    </div>
+  </a>
+</section>
+
+<% if (typeof currentPage === 'undefined' || currentPage !== 'cart') { %>
+  <div id="goToCartBox" class="go-to-cart-box" style="display: none;">
+    <span id="cartInfo">🧺 0 items • ₹0</span>
+    <a href="/cart">Go to Cart</a>
+  </div>
+<% } %>
+
+<script src="/js/updateCartBox.js"></script>
+<script src="/js/menu.js"></script>
+</body>
+</html>

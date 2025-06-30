@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Abandoned Carts | Admin Panel</title>
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <h1>🛒 Abandoned Carts</h1>
+
+  <% if (carts.length === 0) { %>
+    <p>No abandoned carts found.</p>
+  <% } else { %>
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>User Name</th>
+          <th>Email</th>
+          <th>Items</th>
+          <th>Saved At</th>
+        </tr>
+      </thead>
+      <tbody>
+       <% carts.forEach(cart => { %>
+  <h3><%= cart.name %> (<%= cart.email %>)</h3>
+  <ul>
+    <% cart.parsedItems.forEach(item => { %>
+      <li><%= item.name %> - ₹<%= item.price %> × <%= item.quantity %></li>
+    <% }) %>
+  </ul>
+<% }) %>
+      </tbody>
+    </table>
+  <% } %>
+
+  <a href="/admin" class="btn back-btn">← Back to Dashboard</a>
+</body>
+</html>

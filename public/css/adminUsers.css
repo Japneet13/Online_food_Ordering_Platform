@@ -1,0 +1,113 @@
+/* Base Styles */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 2rem;
+  background-color: #111;
+  color: #fff;
+}
+
+h1 {
+  text-align: center;
+  color: #ffd700;
+  margin-bottom: 2rem;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1f1f1f;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+thead {
+  background-color: #2a2a2a;
+}
+
+th, td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #333;
+  font-size: 0.95rem;
+}
+
+th {
+  color: #ffcc00;
+  text-transform: uppercase;
+}
+
+td {
+  color: #ddd;
+}
+
+/* Button styles */
+.btn {
+  padding: 6px 10px;
+  background: #333;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-right: 6px;
+  display: inline-block;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+.btn:hover {
+  background: #555;
+}
+
+/* Status labels */
+.status {
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.status.good {
+  color: #4caf50;
+}
+.status.bad {
+  color: #e74c3c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    background-color: #1a1a1a;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
+  }
+
+  td {
+    padding: 0.6rem 1rem;
+    border: none;
+    position: relative;
+    text-align: left;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #ffcc00;
+    display: block;
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 6px;
+  }
+}

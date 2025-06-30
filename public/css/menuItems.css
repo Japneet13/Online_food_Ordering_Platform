@@ -1,0 +1,474 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #0b0b0b;
+  color: #fff;
+}
+
+/* 🔄 Fade effect container */
+.menu-grid.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.menu-grid.fade-in {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+
+.menu-header {
+  text-align: center;
+  padding: 2rem;
+  background: #1a1a1a;
+  color: #ffd700;
+}
+
+.menu-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+}
+
+
+.card {
+  background: #1f1f1f;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.3);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 1rem 0 0.5rem;
+  color: #ff6347;
+  font-size: 1.3rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin: 0 1rem 1rem;
+}
+
+.price-add {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem 1.2rem;
+}
+.left-price {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #7c7b7b;
+  padding-right: 1rem;
+}
+
+.price-add span {
+  color: #ffd700;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.price-add button {
+  background: #ff6347;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.price-add button:hover {
+  background: #ff2e00;
+}
+
+
+
+
+/* Filter Bar Styling */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.filter-btn, .reset-btn {
+  background-color: #333;
+  color: #ffcc00;
+  border: 1px solid #ffcc00;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.filter-btn.active, .filter-btn:hover, .reset-btn:hover {
+  background-color: #ffcc00;
+  color: #1a1a1a;
+}
+
+/* Filter Dropdown Group */
+.filter-subgroup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+  gap: 1.2rem;
+  max-width: 900px;
+  text-align: center;
+}
+
+/* 🧺 Dropdown Styling */
+.filter-controls label {
+  margin: 0;
+  color: #ffcc00;
+  font-weight: 600;
+}
+
+.filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-controls select {
+  padding: 0.5rem 1rem;
+  background-color: #2a2a2a;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 6px;
+  font-weight: bold;
+  appearance: none;
+}
+
+.filter-controls select:focus {
+  border-color: #ffcc00;
+  outline: none;
+}
+
+/* Search Box with Custom Icon */
+.search-box {
+  position: relative;
+  max-width: 300px;
+  flex: 1;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+  border: 1px solid #555;
+  border-radius: 6px;
+  background-color: #2a2a2a;
+  color: white;
+}
+
+.search-box .search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+
+/* Wrapper to contain filters and search bar */
+.filter-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+}
+
+
+/* reset btn */
+.reset-btn {
+  margin-left: auto;
+  background-color: transparent;
+  border: 1px solid #777;
+  color: #ccc;
+}
+
+.reset-btn:hover {
+  background-color: #ff6347;
+  color: #fff;
+}
+
+/* cart button */
+.add-to-cart-btn {
+  background-color: #e63946;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #d62828;
+}
+
+.cart-count {
+  background-color: #e63946;
+  color: white;
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  margin-left: 6px;
+  display: inline-block;
+}
+
+
+.toast {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  background-color: #28a745;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  font-weight: bold;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.go-to-cart-box {
+  display: none;
+  position: fixed;
+  bottom: 5px;
+  left: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.85); 
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border: 2px solid #333;
+  border-radius: 10px;
+  z-index: 999;
+  font-weight: 500;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+.menu-grid {
+  padding-bottom: 100px; 
+}
+
+.go-to-cart-box span {
+  font-family: 'Satisfy', cursive;
+  font-size: 1.2rem;
+}
+
+.go-to-cart-box a {
+  background-color: #ffbd22;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+  transition: background 0.3s ease;
+  box-shadow: 0 2px 6px rgba(255, 87, 34, 0.3);
+}
+
+.go-to-cart-box a:hover {
+  background-color: #e64a19;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+/* Pre-add-controls */
+.pre-add-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.pre-add-controls button {
+  padding: 4px 8px;
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.qty {
+  font-weight: bold;
+  width: 24px;
+  text-align: center;
+}
+
+/* Slide-up animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile */
+/* ✅ Responsive Grid Layout */
+@media (max-width: 1023px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  align-items: stretch;
+}
+
+  .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 400px; /* Adjust this if your content is taller */
+  background: #1f1f1f;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.3);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+  .card img {
+    height: 180px;
+  }
+
+  .card h3 {
+  margin: 1rem 0 0.5rem;
+  color: #ff6347;
+  font-size: 1.3rem;
+  min-height: 48px; /* Ensures consistent title height */
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin: 0 1rem 1rem;
+  min-height: 60px; /* Prevents visual jumpiness */
+}
+
+.price-add {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem 1.2rem;
+}
+
+  .price-add span {
+    font-size: 1.1rem;
+  }
+
+  .price-add button {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+  /* Make the entire filter-wrapper stack and center */
+  .filter-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .search-box {
+    width: 90%;
+    max-width: 320px;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .search-box input {
+    width: 100%;
+    padding: 0.6rem 0.6rem 0.6rem 2.2rem; /* leaves room for the icon */
+    border-radius: 6px;
+    border: 1px solid #555;
+    background-color: #2a2a2a;
+    color: #fff;
+    box-sizing: border-box;
+  }
+
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 18px;
+    height: 18px;
+    transform: translateY(-50%);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .filter-bar {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .reset-btn {
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+

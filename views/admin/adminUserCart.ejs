@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Abandoned Cart | User <%= userId %></title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <h1>🧺 Abandoned Cart of User #<%= userId %></h1>
+
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% cart.forEach(item => { %>
+        <tr>
+          <td><%= item.name %></td>
+          <td><%= item.quantity %></td>
+          <td>₹<%= item.price %></td>
+          <td>₹<%= item.quantity * item.price %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <a href="/admin/users" class="btn">← Back to Users</a>
+</body>
+</html>

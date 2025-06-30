@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Menu Item | Admin</title>
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <h1>✏️ Edit Menu Item</h1>
+
+  <form action="/admin/edit-item/<%= item.id %>" method="POST" enctype="multipart/form-data" class="item-form">
+    <label>Name:</label>
+    <input type="text" name="name" required value="<%= item.name %>" />
+
+    <label>Description:</label>
+    <textarea name="description" required><%= item.description %></textarea>
+
+    <label>Price (₹):</label>
+    <input type="number" name="price" required value="<%= item.price %>" />
+
+    <label>Current Image:</label>
+    <div class="current-image">
+      <img src="/images/<%= item.image %>" alt="Current image" height="100">
+      <p><%= item.image %></p>
+    </div>
+
+    <label>Change Image:</label>
+    <input type="file" name="image" accept="image/*" />
+
+    <label>Category:</label>
+    <select name="category" required>
+      <% ['Pizza', 'Pasta', 'Garlic Breads', 'Fries', 'Beverages', 'Dips & Sauces'].forEach(cat => { %>
+        <option value="<%= cat %>" <%= item.category === cat ? 'selected' : '' %>><%= cat %></option>
+      <% }) %>
+    </select>
+
+    <label>Type:</label>
+    <select name="type" required>
+      <option value="Veg" <%= item.type === 'Veg' ? 'selected' : '' %>>Veg</option>
+      <option value="Non-Veg" <%= item.type === 'Non-Veg' ? 'selected' : '' %>>Non-Veg</option>
+    </select>
+
+    <label>Price Level:</label>
+    <select name="price_level">
+      <option <%= item.price_level === 'Low' ? 'selected' : '' %>>Low</option>
+      <option <%= item.price_level === 'Medium' ? 'selected' : '' %>>Medium</option>
+      <option <%= item.price_level === 'High' ? 'selected' : '' %>>High</option>
+    </select>
+
+    <label>Spice Level:</label>
+    <select name="spice_level">
+      <option <%= item.spice_level === 'Mild' ? 'selected' : '' %>>Mild</option>
+      <option <%= item.spice_level === 'Medium' ? 'selected' : '' %>>Medium</option>
+      <option <%= item.spice_level === 'Hot' ? 'selected' : '' %>>Hot</option>
+    </select>
+
+    <button type="submit">💾 Save Changes</button>
+  </form>
+</body>
+</html>

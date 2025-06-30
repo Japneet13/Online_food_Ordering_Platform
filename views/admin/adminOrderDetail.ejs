@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Order #<%= order.id %> Details | Admin</title>
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+
+  <h1>📦 Order #<%= order.id %> - Details</h1>
+
+  <p><strong>User ID:</strong> <%= order.user_id %></p>
+  <p><strong>Total Items:</strong> <%= order.total_items %></p>
+  <p><strong>Total Price:</strong> ₹<%= order.total_price %></p>
+  <p><strong>Placed At:</strong> <%= order.created_at.toLocaleString() %></p>
+
+  <h2>🧾 Items in this Order:</h2>
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Item Name</th>
+        <th>Qty</th>
+        <th>Unit Price</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% items.forEach((item, index) => { %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= item.name %></td>
+          <td><%= item.quantity %></td>
+          <td>₹<%= item.price %></td>
+          <td>₹<%= item.quantity * item.price %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <a href="/admin/orders" class="btn">← Back to Orders</a>
+
+</body>
+</html>

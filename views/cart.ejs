@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/cart.css" />
+  <title>Your Cart | La Crosta</title>
+</head>
+<body data-loggedin="<%= user ? 'true' : 'false' %>">
+
+<div class="cart-container">
+  <h1>Your Cart</h1>
+
+    <% if (cart.length > 0 && !user) { %>
+  <p class="guest-msg">
+    You're checking out as a <strong>guest</strong>. 
+    <a href="/login?from=cart">Sign in</a> to save your order history and faster checkout next time!
+  </p>
+<% } %>
+
+
+  <% if (cart.length === 0) { %>
+    <div class="empty-cart">
+      <img src="/images/empty-plate.png" alt="Empty plate" class="empty-cart-img" />
+      <h2 class="empty-cart-text">Oops! Your cart's on a diet. 🥲</h2>
+      <p class="empty-cart-subtext">Add something delicious before it starts eating your soul too!</p>
+      <a href="/menu" class="btn explore-menu-btn">Explore Menu 🍕</a>
+    </div>
+  <% } else { %>
+    <ul class="cart-list">
+  <% cart.forEach(item => { %>
+    <li class="cart-item" data-id="<%= item.id %>" data-price="<%= parseFloat(item.price) %>">
+      <img src="/images/<%= item.image %>" alt="<%= item.name %>" class="cart-item-img" />
+      
+      <div class="cart-item-details">
+        <h4><%= item.name %></h4>
+        <p>Unit Price: ₹<%= parseFloat(item.price).toFixed(2) %></p>
+
+        <div class="quantity-controls" data-id="<%= item.id %>">
+          <button class="qty-btn decrease">−</button>
+          <span class="qty"><%= item.quantity %></span>
+          <button class="qty-btn increase">+</button>
+          <button class="qty-btn remove">🗑️</button>
+        </div>
+
+        <p class="item-total">Total: ₹<%= (item.quantity * parseFloat(item.price)).toFixed(2) %></p>
+      </div>
+    </li>
+  <% }) %>
+</ul>
+  
+    <div class="cart-summary">
+      <p>Total Items: <%= totalItems %></p>
+      <p>Total Price: ₹<%= totalPrice %></p>
+
+      <form id="clearCartForm" action="/clear-cart" method="POST">
+        <button type="button" id="openClearCartModal" class="clear-cart-btn">Clear Cart</button>
+     </form>
+
+
+      <form action="/place-order" method="POST">
+        <button type="submit" class="checkout-btn" <%= totalItems === 0 ? 'disabled' : '' %>>
+          Checkout
+        </button>
+      </form>
+
+      
+
+    </div>
+  <% } %>
+</div>
+
+<!-- ⚠️ Clear Cart Confirmation Modal -->
+<div id="clearCartModal" class="modal hidden">
+  <div class="modal-content">
+    <p>🧹 Are you sure you want to clear the cart?</p>
+    <div class="modal-actions">
+      <button id="confirmClearCart">Yes, clear it</button>
+      <button id="cancelClearCart">Cancel</button>
+    </div>
+  </div>
+</div>
+
+
+<script src="/js/cart.js"></script>
+</body>
+</html>

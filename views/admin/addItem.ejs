@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Add Menu Item | Admin</title>
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <h1>➕ Add New Menu Item</h1>
+
+  <form action="/admin/add-item" method="POST" enctype="multipart/form-data" class="item-form">
+    <label>Name:</label>
+    <input type="text" name="name" required />
+
+    <label>Description:</label>
+    <textarea name="description" required></textarea>
+
+    <label>Price (₹):</label>
+    <input type="number" name="price" step="0.01" required />
+
+    <label>Image:</label>
+    <input type="file" name="image" accept="image/*" required />
+
+    <label>Category:</label>
+    <select name="category" required>
+      <option disabled selected>Select category</option>
+      <option>Pizza</option>
+      <option>Pasta</option>
+      <option>Garlic Breads</option>
+      <option>Fries</option>
+      <option>Beverages</option>
+      <option>Dips & Sauces</option>
+    </select>
+
+    <label>Type:</label>
+    <select name="type" required>
+      <option disabled selected>Select type</option>
+      <option value="Veg">Veg</option>
+      <option value="Non-Veg">Non-Veg</option>
+    </select>
+
+    <label>Price Level:</label>
+    <select name="price_level" required>
+      <option disabled selected>Choose price level</option>
+      <option>Low</option>
+      <option>Medium</option>
+      <option>High</option>
+    </select>
+
+    <label>Spice Level:</label>
+    <select name="spice_level" required>
+      <option disabled selected>Choose spice level</option>
+      <option>Mild</option>
+      <option>Medium</option>
+      <option>Hot</option>
+    </select>
+
+    <button type="submit">➕ Add Item</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,328 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.menu-section,
+.intro-container,
+.intro-image,
+.intro-image img {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* Base Page Styling */
+body {
+  background-color: #434343; 
+  color: #000; 
+  font-family: "Satisfy", cursive;
+  margin: 0;
+  padding: 0;
+}
+body,
+.menu-section,
+.intro-container,
+.intro-image,
+img {
+  margin: 0;
+  padding: 0;
+}
+
+/* 🔥 Themed Navbar */
+.menu-navbar {
+  background: rgba(26, 26, 26, 0.6); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffcc00;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(255, 94, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.menu-navbar .nav-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffe066;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+  padding: 0.3rem 0.7rem;
+  color: #ffd369;
+}
+
+.nav-link:hover {
+  border-bottom: 2px solid #ffd369;
+}
+
+/* Section Headings (Pizza, Pasta, etc.) */
+.category-heading {
+  text-align: center;
+  margin: 4rem 0 1rem;
+  font-size: 2.5rem !important ;
+  color: #ffd369 !important ;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: underline;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 4px rgba(255, 165, 0, 0.4);
+  position: relative;
+}
+
+/* 🔲 Section Block */
+.menu-section {
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* 🔄 Layout Wrapper */
+.intro-container {
+  display: flex;
+  width: 100vw;
+  height: 450px;
+  overflow: hidden;
+}
+
+/* 🖼️ Image Block */
+.intro-image {
+  flex: 0 0 40%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Show entire image without crop */
+  object-position: center;
+  display: block;
+  filter: brightness(90%);
+  background-color: none;
+}
+
+/* ✏️ Text Block */
+.intro-tagline {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;    
+  align-items: flex-start;    
+  text-align: left;
+  color: #fff;
+}
+
+
+.intro-tagline h2 {
+  font-size: 2rem;
+  color: #ff6347;
+  margin-bottom: 0.5rem;
+}
+
+.intro-tagline p {
+  font-size: 1.1rem;
+  color: #ddd;
+}
+
+/* 🎨 Background Color Variants */
+.bg-charcoal {
+  background-color: #1a1a1a;
+} /* Pizza */
+.bg-maroon {
+  background-color: #2b1f1f;
+} /* Pasta */
+.bg-olive {
+  background-color: #1f2b1f;
+} /* Garlic Breads */
+.bg-toast {
+  background-color: #2b2b1f;
+} /* Fries */
+.bg-navy {
+  background-color: #1f1f2b;
+} /* Beverages */
+.bg-purple {
+  background-color: #2b1f2b;
+} /* Dips & Sauces */
+
+/* ↔️ Content Order */
+.left-image .intro-image {
+  order: 1;
+}
+.left-image .intro-tagline {
+  order: 2;
+}
+.right-image .intro-image {
+  order: 2;
+}
+.right-image .intro-tagline {
+  order: 1;
+}
+
+/* 🎯 Image Alignment Inside Its Container */
+.left-image .intro-image img {
+  object-position: left center;
+}
+.right-image .intro-image img {
+  object-position: right center;
+}
+
+.intro-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.intro-link:hover h2 {
+  color: #ff6347;
+}
+
+/* next page link */
+.menu-link-wrapper {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.menu-link-wrapper:hover .intro-container {
+  background-color: rgba(255, 255, 255, 0.05); /* optional hover effect */
+  cursor: pointer;
+}
+
+.go-to-cart-box {
+  position: fixed;
+  bottom: 10px;
+  left: 5px;
+  right: 5px;
+  background-color: #111;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 12px;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  font-family: 'Satisfy', cursive;
+}
+.go-to-cart-box a {
+  background: #ff3c00;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  /* Navbar stacking */
+  .menu-navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+    padding-left: 0;
+    padding-bottom: 0.5rem;
+  }
+
+  /* Fix layout for all .intro-container sections */
+  .intro-container {
+    flex-direction: column !important;
+    height: auto;
+    width: 100%;
+  }
+
+  /* Force all text and images to appear correctly in stack */
+  .left-image .intro-image,
+  .right-image .intro-image,
+  .left-image .intro-tagline,
+  .right-image .intro-tagline {
+    order: unset !important;
+  }
+
+  .intro-image {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .intro-image img {
+    object-fit: contain;
+    max-height: 250px;
+    max-width: 100%;
+    display: block;
+  }
+
+  .intro-tagline {
+    padding: 1rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .intro-tagline h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .intro-tagline p {
+    font-size: 0.95rem;
+    color: #eee;
+  }
+
+  /* Category heading shrink */
+  .category-heading {
+    font-size: 1.4rem !important;
+    margin-top: 1rem;
+  }
+
+  /* Go to cart box */
+  .go-to-cart-box {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px;
+    font-size: 0.95rem;
+    gap: 8px;
+  }
+
+  .go-to-cart-box a {
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+  }
+}

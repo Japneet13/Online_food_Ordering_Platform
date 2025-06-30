@@ -1,0 +1,477 @@
+/* Base styling */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 2rem;
+  background-color: #0b0b0b;
+  color: #fff;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #ffd700;
+}
+
+a {
+  color: #ff6347;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+/* Categories */
+.admin-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.2rem;
+  margin: 2rem 0 3rem;
+}
+
+.admin-categories a {
+  background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+  color: #f0f0f0;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(255, 200, 0, 0.1);
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.admin-categories a:hover {
+  background-color: #ffcc00;
+  color: #f9ecec;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(255, 200, 0, 0.4);
+}
+
+.admin-categories .active-category {
+  background-color: #ffcc00;
+  color: #8b8383;
+  font-weight: 800;
+  border: 1px solid #ffaa00;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
+}
+
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1a1a1a;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+
+th {
+  background-color: #2c2c2c;
+  color: #ffd700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+td {
+  color: #eee;
+}
+
+/* Action buttons layout */
+td .action-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+td .action-buttons form {
+  display: inline;
+  margin: 0;
+}
+
+td .action-buttons a,
+td .action-buttons button {
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+td .action-buttons a.edit-btn {
+  background-color: #3498db;
+  color: #fff;
+}
+
+td .action-buttons button.delete-btn {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+td .action-buttons a.edit-btn:hover,
+td .action-buttons button.delete-btn:hover {
+  opacity: 0.9;
+}
+td img {
+  border-radius: 6px;
+  max-height: 60px;
+  object-fit: cover;
+  border: 1px solid #444;
+}
+
+
+/* editItems - Improved version */
+.item-form {
+  max-width: 650px;
+  margin: 3rem auto;
+  background: #1a1a1a;
+  padding: 2.5rem;
+  border-radius: 14px;
+  box-shadow: 0 0 30px rgba(255, 105, 0, 0.2);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.item-form label {
+  font-weight: 600;
+  color: #ffcc00;
+  font-size: 1rem;
+}
+
+.item-form input,
+.item-form textarea,
+.item-form select {
+  width: 100%;
+  padding: 10px 12px;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  color: #f1f1f1;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.item-form input:focus,
+.item-form textarea:focus,
+.item-form select:focus {
+  outline: none;
+  border-color: #ffcc00;
+  box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
+}
+
+.item-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.item-form button {
+  margin-top: 1.5rem;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #ff6347;
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.item-form button:hover {
+  background-color: #e5533d;
+}
+
+.item-form .grouped {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+
+/* 🖼️ Preview block */
+.current-image {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+  background: #222;
+  padding: 0.7rem;
+  border-radius: 10px;
+}
+
+.current-image img {
+  border: 1px solid #444;
+  border-radius: 6px;
+  height: 80px;
+}
+
+/* ✅ Success Toast */
+.toast.success {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 12px 20px;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid #c3e6cb;
+  font-weight: bold;
+  animation: fadeOut 4s ease-in-out forwards;
+  text-align: center;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; display: none; }
+}
+
+/* delete confirmation */
+.confirm-modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.confirm-box {
+  background: #1a1a1a;
+  color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 204, 0, 0.4);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+.modal-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.modal-buttons button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#cancelDelete {
+  background-color: #444;
+  color: white;
+}
+#cancelDelete:hover {
+  background-color: #666;
+}
+.danger {
+  background-color: #ff4d4d;
+  color: white;
+}
+.danger:hover {
+  background-color: #cc0000;
+}
+.hidden {
+  display: none;
+}
+
+.back-btn {
+  display: inline-block;
+  margin-bottom: 1rem;
+  background: #444;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.admin-table th, .admin-table td {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.dashboard-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem auto;
+  flex-wrap: wrap;
+}
+
+.stat-box {
+  background-color: #fff;
+  color: black;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.15);
+  width: 160px;
+}
+
+.stat-box .icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-box .label {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.stat-box .value {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.dashboard-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.link-btn {
+  color: orangered;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.add-item-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.add-item-btn {
+  background-color: #6600cc;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.add-item-btn:hover {
+  background-color: #4d0099;
+}
+
+
+/* Responsive fix for small screens */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .admin-categories {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+
+  .item-form {
+    padding: 1.2rem;
+    margin: 2rem 1rem;
+  }
+
+  .dashboard-stats {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dashboard-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .add-item-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .stat-box {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .admin-table th, .admin-table td {
+    font-size: 0.8rem;
+    padding: 0.4rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  td .action-buttons button,
+  td .action-buttons a {
+    width: 100%;
+    font-size: 0.8rem;
+    padding: 0.4rem;
+  }
+}
+
+/* Ultra-small screen support */
+@media (max-width: 480px) {
+  .item-form label {
+    font-size: 0.9rem;
+  }
+
+  .item-form input,
+  .item-form textarea,
+  .item-form select {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .item-form button {
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .admin-categories a {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+
+  .stat-box {
+    padding: 1rem;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+  }
+
+  .modal-buttons button {
+    width: 100%;
+  }
+}

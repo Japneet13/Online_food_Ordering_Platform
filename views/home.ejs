@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>La Crosta</title>
+    <link rel="icon" href="/images/pizza-box-icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta id="user-status" data-loggedin="<%= user ? 'true' : 'false' %>">
+
+
+
+  </head>
+  <body>
+
+    <!-- 🔗 Navbar -->
+    <nav class="navbar">
+      <div class="nav-left">
+        <img
+          src="/images/pizza-box-icon.png"
+          id="hamburger"
+          class="hamburger-img"
+          alt="Menu Toggle"
+        />
+        <div class="logo">La Crosta</div>
+      </div>
+
+      <div class="nav-search">
+        <input type="text" id="menuSearch" placeholder="Search dishes..." />
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+  <li><a href="/">Home</a></li>
+  <li><a href="#menu">Menu</a></li>
+  <li><a href="#about">About</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="/cart" class="cart-icon">🧺 <!-- 🛒 -->
+    <% let cartCount = 0;
+      if (cart) {
+      cart.forEach(item => { cartCount += item.quantity; });
+      }
+    %>
+     <span class="cart-count" <% if (cartCount === 0) { %>style="display: none;"<% } %>>
+    <%= cartCount %>
+     </span>
+  </a></li> 
+
+  <% if (user) { %>
+
+    <!-- Desktop: Profile Icon -->
+<li class="nav-profile-container desktop-only profile-wrapper">
+  <img src="https://cdn-icons-png.flaticon.com/512/456/456212.png" alt="User" class="nav-user-icon" id="profileIcon" />
+
+  <div id="profileDropdown">
+    <p><strong><%= user.name %></strong></p>
+    <p><%= user.email %></p>
+    <a href="/logout" class="logout-link">Logout</a>
+  </div>
+</li>
+
+
+
+    <!-- Mobile: Direct Logout -->
+    <li class="mobile-only">
+      <a href="/logout">Logout</a>
+    </li>
+
+  <% } else { %>
+    <!-- Desktop: Sign In -->
+    <li class="desktop-only">
+  <a href="#" class="signin-trigger">Sign In</a>
+</li>
+  <% } %>
+</ul>
+
+
+<!-- Desktop dropdown stays outside nav-links -->
+<div class="mobile-search-toggle">
+  <button id="searchToggleBtn">
+    <img src="/images/search-icon.png" alt="Search" class="search-icon-img" />
+  </button>
+
+  <% if (user) { %>
+    <a href="/logout" class="mobile-auth-btn">Logout</a>
+  <% } else { %>
+    <button class="signin-trigger mobile-auth-btn">Sign In</button>
+  <% } %>
+</div>
+
+    </nav>
+
+    <!-- Mobile floating search bar -->
+    <div class="mobile-search-bar" id="mobileSearchBar">
+      <input type="text" id="mobileMenuSearch" placeholder="Search dishes..." />
+    </div>
+
+    <!-- 🎯 Hero Section -->
+    <div class="hero">
+      <video autoplay muted loop playsinline class="hero-video">
+        <source src="/videos/pizza-hero.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="overlay"></div>
+      <div class="content">
+        <h1 class="brand-title">
+          La Crosta — Born in the Oven. Raised in Fire.
+        </h1>
+        <p class="tagline">Where Every Crust Tells a Story.</p>
+      </div>
+    </div>
+
+    <!-- 🍽️ Menu Section -->
+    <section id="menu" class="menu-section">
+  <h2>Our Signature Dishes</h2>
+  <div class="menu">
+
+    <a href="/menu" class="food-card">
+      <img src="/images/margherita.jpg" alt="Margherita Pizza" />
+      <h3>Margherita</h3>
+      <p>Classic delight with mozzarella & basil.</p>
+    </a>
+
+    <a href="/menu" class="food-card">
+      <img src="/images/pepperoni.jpg" alt="Pepperoni Pizza" />
+      <h3>Pepperoni</h3>
+      <p>Bold and spicy with crispy pepperoni slices.</p>
+    </a>
+
+    <a href="/menu" class="food-card">
+      <img src="/images/veg-delight.jpg" alt="Veggie Delight" />
+      <h3>Veggie Delight</h3>
+      <p>Loaded with seasonal fresh vegetables.</p>
+    </a>
+
+    <a href="/menu" class="food-card link-card">
+      <img src="/images/full-menu.jpg" alt="Explore Full Menu" />
+      <h3>Explore Full Menu</h3>
+      <p>Hungry for more? Click here to explore everything we serve!</p>
+    </a>
+
+  </div>
+</section>
+
+
+    <!-- Sidebar for Sign In -->
+ 
+<div class="signin-sidebar" id="signinSidebar">
+  <div class="sidebar-content">
+    <span id="closeSidebar">&times;</span>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="white" viewBox="0 0 24 24" class="sidebar-avatar">
+      <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.865 0-7 3.134-7 7h2c0-2.761 2.239-5 5-5s5 2.239 5 5h2c0-3.866-3.135-7-7-7z"/>
+    </svg>
+
+    <h3 class="sidebar-tagline">Crust us, it's worth signing in.</h3>
+
+    <!-- Login Form -->
+     <div class="sidebar-content">
+     <% if (loginError) { %>
+  <p style="color: #ff4d4d; font-weight: bold;">Invalid email or password</p>
+   <% } %>
+
+    <form id="loginForm" action="/login" method="POST" class="login-form" autocomplete="off">
+  <input type="text" name="email" placeholder="Email" required autocomplete="new-email" />
+  <input type="password" name="password" placeholder="Password" required autocomplete="new-password" />
+  <button type="submit" class="sidebar-btn">Login</button>
+</form>
+     </div>
+
+    <p id="showSignupLink" class="signup-redirect">
+      Doughn’t miss out — create your table now.
+      <a href="#" id="signupToggle">Sign up</a>
+   </p>
+
+
+    <!-- Signup Form (hidden initially) -->
+    <form id="signupForm" action="/signup" method="POST" class="login-form hidden" autocomplete="off">
+  <input type="text" name="name" placeholder="Full Name" required autocomplete="off" />
+  <input type="email" name="email" placeholder="Email" required autocomplete="new-email" />
+  <input type="password" name="password" placeholder="Password" required autocomplete="new-password" />
+  <button type="submit" class="sidebar-btn">Create Account</button>
+</form>
+
+
+    <p id="backToLoginLink" class="signup-redirect hidden">
+      Already crusted in? <a href="#">Back to login</a>
+    </p>
+  </div>
+</div>
+
+
+
+<!-- About Section -->
+    <section id="about" class="about-section">
+  <h2>About La Crosta</h2>
+
+  <div class="about-wrapper">
+  <div class="about-content">
+    <div class="about-text">
+      <p>
+        La Crosta is more than a pizzeria — it’s a celebration of flavor,
+        fire, and good food. Sure, our pizza crusts are legendary, but that’s just the beginning.
+        From saucy pastas and cheesy garlic breads to crispy fries, fizzy drinks, and
+        dipping sauces that make you question your life choices — our menu is designed to satisfy every craving.
+        Everything we serve is hand-crafted, oven-fired, and infused with unapologetic love for carbs.
+        Whether you're here for a quick bite or a full feast, we’re serving comfort food with character.
+      </p>
+    </div>
+  </div>
+  
+  <div class="about-image-absolute">
+    <img src="/images/about-la-crosta.jpg" alt="About Pizza Image" />
+  </div>
+  </div>
+</section>
+
+<div id="signupReminderCard" class="signup-reminder-card hidden">
+  <h3>👋 New here?</h3>
+  <p>Create an account to explore our delicious menu and order your favourites!</p>
+  <a href="/?showLogin=1&from=reminder" id="openSigninSidebarBtn" class="signin-trigger">Sign In</a>
+  <button id="dismissReminderBtn">Dismiss</button>
+</div>
+
+
+    <!-- 👣 Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 <span>La Crosta</span>. All rights reserved.</p>
+    </footer>
+
+    <!-- hidden meta for JS to read login status -->
+<meta id="user-status" data-loggedin="<%= user ? 'true' : 'false' %>" />
+
+<% if (typeof currentPage === 'undefined' || currentPage !== 'cart') { %>
+  <div id="goToCartBox" class="go-to-cart-box" style="display: none;">
+    <span id="cartInfo">🧺 0 items • ₹0</span>
+    <a href="/cart">Go to Cart</a>
+  </div>
+<% } %>
+
+<script src="/js/updateCartBox.js"></script>
+<script src="/js/home.js"></script>
+</body>
+
+</html>

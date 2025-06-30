@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard | La Crosta</title>
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <h1>🍕 Admin Dashboard - La Crosta</h1>
+
+  <% if (updated === 'added') { %>
+    <div class="toast success">✅ Item added successfully!</div>
+  <% } else if (updated === 'edited') { %>
+    <div class="toast success">✏️ Item updated successfully!</div>
+  <% } else if (updated === 'deleted') { %>
+    <div class="toast success">🗑️ Item deleted successfully!</div>
+  <% } %>
+
+
+  <!-- ✅ Centered stats box -->
+  <div style="display: flex; justify-content: center; margin-bottom: 1rem;">
+    <div class="dashboard-stats">
+  <div class="stat-box">
+    <div class="icon">👥</div>
+    <div class="label">Users</div>
+    <div class="value"><%= totalUsers %></div>
+  </div>
+  <div class="stat-box">
+    <div class="icon">📑</div>
+    <div class="label">Orders</div>
+    <div class="value"><%= totalOrders %></div>
+  </div>
+  <div class="stat-box">
+    <div class="icon">🛒</div>
+    <div class="label">Abandoned Carts</div>
+    <div class="value"><%= abandonedCarts %></div>
+  </div>
+  <div class="stat-box">
+    <div class="icon">📋</div>
+    <div class="label">Menu Items</div>
+    <div class="value"><%= totalMenuItems %></div>
+  </div>
+</div>
+  </div>
+
+  <div class="dashboard-links">
+  <a href="/admin/users" class="btn link-btn">📋 View All Users</a>
+  <a href="/admin/orders" class="btn link-btn">📑 View Orders</a>
+</div>
+
+
+    <!-- ✅ Add New Item button -->
+  <div style="text-align: center; margin-bottom: 1rem;">
+    <a href="/admin/add-item" class="add-btn">➕ Add New Item</a>
+  </div>
+
+  <!-- ✅ Category Bar -->
+  <div class="admin-categories">
+    <% ['Pizza', 'Pasta', 'Garlic Breads', 'Fries', 'Beverages', 'Dips & Sauces'].forEach(cat => { %>
+      <a href="/admin/category/<%= cat %>" class="<%= currentCategory === cat ? 'active-category' : '' %>">
+        <%= cat %>
+      </a>
+    <% }) %>
+    <a href="/admin" class="<%= !currentCategory ? 'active-category' : '' %>">All Items</a>
+  </div>
+
+
+
+  <% if (currentCategory) { %>
+    <h2 style="margin-bottom: 1rem;">📂 Category: <%= currentCategory %></h2>
+  <% } %>
+
+  <table class="menu-table">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Type</th>
+        <th>Spice</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% items.forEach(item => { %>
+        <tr>
+          <td><img src="/images/<%= item.image %>" width="80" /></td>
+          <td><%= item.name %></td>
+          <td><%= item.category %></td>
+          <td><%= item.type %></td>
+          <td><%= item.spice_level %></td>
+          <td>₹<%= item.price %></td>
+          <td>
+            <a href="/admin/edit-item/<%= item.id %>" class="edit-btn">✏️ Edit</a>
+            <button class="delete-btn" data-id="<%= item.id %>" data-name="<%= item.name %>">🗑️ Delete</button>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <!-- 🔴 Delete Confirmation Modal -->
+  <div id="confirmModal" class="confirm-modal hidden">
+    <div class="confirm-box">
+      <p id="confirmMessage">Are you sure you want to delete this item?</p>
+      <div class="modal-buttons">
+        <button id="cancelDelete">Cancel</button>
+        <form id="deleteForm" method="POST">
+          <button type="submit" class="danger">Yes, Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>

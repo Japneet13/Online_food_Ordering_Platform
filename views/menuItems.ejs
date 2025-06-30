@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title><%= title %> | La Crosta</title>
+  <link rel="stylesheet" href="/css/menuItems.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta id="user-status" data-loggedin="<%= user ? 'true' : 'false' %>">
+</head>
+<body>
+
+  <header class="menu-header">
+    <% if (title.includes('Pizza')) { %>
+      <h1>Built like a pizza, layered, hot, and slightly dramatic. 🎭🍕</h1>
+      <p>Choose your slice of happiness — or take the whole pie.</p>
+    <% } else if (title.includes('Pasta')) { %>
+      <h1>🍝 Creamier than your last apology. And more sincere too.</h1>
+      <p>Swirls of comfort, drizzled with sauce and sass.</p>
+    <% } else if (title.includes('Garlic')) { %>
+      <h1>🧄 Warning: side dish syndrome may cause emotional attachment.</h1>
+      <p>Toasted, cheesy, buttery love in every bite.</p>
+    <% } else if (title.includes('Fries')) { %>
+      <h1>🍟 More crisp than your texts, and definitely more golden.</h1>
+      <p>Too hot, too crispy, too cool to ignore.</p>
+    <% } else if (title.includes('Beverages')) { %>
+      <h1>🥤Hydration with attitude. Because chaos doesn’t have to be dry.</h1>
+      <p>Fizz, chill & thrill — refreshing your soul one sip at a time.</p>
+    <% } else if (title.includes('Dips')) { %>
+      <h1>🥫 A gentle reminder that bland is a choice. Don’t make it.</h1>
+      <p>Saucier than your last situationship.</p>
+    <% } else { %>
+      <h1><%= title %></h1>
+      <p>Explore our flavorful selections below.</p>
+    <% } %>
+  </header>
+
+  <% if (!title.includes('Beverages') && !title.includes('Dips')) { %>
+    <div class="filter-wrapper">
+      <div class="filter-bar">
+        <button class="filter-btn" data-filter="All">All</button>
+        <button class="filter-btn" data-filter="Veg">Veg</button>
+        <button class="filter-btn" data-filter="Non-Veg">Non-Veg</button>
+        <button id="resetFilters" class="reset-btn">Reset Filters</button>
+      </div>
+      <div class="search-box">
+        <img src="/images/search-icon.png" alt="Search" class="search-icon" />
+        <input type="text" id="searchInput" placeholder="Search dishes..." />
+      </div>
+    </div>
+
+    <div class="filter-subgroup">
+      <div class="filter-controls">
+        <label for="priceFilter">💰 Price:</label>
+        <select id="priceFilter">
+          <option value="All">All</option>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+
+        <label for="spiceFilter">🌶️ Spice:</label>
+        <select id="spiceFilter">
+          <option value="All">All</option>
+          <option value="Mild">Mild</option>
+          <option value="Medium">Medium</option>
+          <option value="Hot">Hot</option>
+        </select>
+      </div>
+    </div>
+  <% } else { %>
+    <div class="filter-subgroup" style="justify-content: center; padding-right: 2rem;">
+      <div class="search-box">
+        <img src="/images/search-icon.png" alt="Search" class="search-icon" />
+        <input type="text" id="searchInput" placeholder="Search here..." />
+      </div>
+    </div>
+  <% } %>
+
+  <!-- 🍕 Menu Grid -->
+  <div class="menu-grid">
+  <% items.forEach(item => { 
+       const itemInCart = (cart || []).find(ci => ci.id == item.id);
+       const itemQty = itemInCart ? itemInCart.quantity : 1;
+  %>
+
+  <div class="card"
+     data-id="<%= item.id %>"
+     data-type="<%= item.type %>"
+     data-price="<%= item.price_level %>"
+     data-spice="<%= item.spice_level %>">
+
+    <img src="/images/<%= item.image %>" alt="<%= item.name %>" />
+    <h3><%= item.name %></h3>
+    <p><%= item.description %></p>
+    
+    <div class="price-add cart-interaction" data-id="<%= item.id %>">
+
+  <div class="left-price">
+    ₹<%= parseFloat(item.price).toFixed(2) %>
+  </div>
+
+      <!-- ✅ FIXED: Form fields -->
+      <form class="add-to-cart-form <%= itemInCart ? 'hidden' : '' %>" method="POST" action="/add-to-cart">
+  <input type="hidden" name="id" value="<%= item.id %>">
+  <input type="hidden" name="name" value="<%= item.name %>">
+  <input type="hidden" name="price" value="<%= item.price %>">
+  <input type="hidden" name="image" value="<%= item.image %>">
+  <input type="hidden" name="quantity" class="qty-input" value="1">
+  <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+</form>
+
+
+      <div class="pre-add-controls <%= itemInCart ? '' : 'hidden' %>">
+        <button class="dec-btn qty-btn">−</button>
+        <span class="qty"><%= itemQty %></span>
+        <input type="hidden" class="qty-input" name="quantity" value="<%= itemQty %>">
+        <button class="inc-btn qty-btn">+</button>
+      </div>
+    </div>
+  </div>
+
+  <% }) %> 
+</div>
+
+
+  <!-- 🧀 Toaster -->
+  <div id="toast" class="toast">Item added to cart!</div>
+
+  <!-- 🚚 Go to Cart -->
+  <% if (typeof currentPage === 'undefined' || currentPage !== 'cart') { %>
+    <div id="goToCartBox" class="go-to-cart-box">
+      <span id="cartInfo">🧺 0 items • ₹0</span>
+      <a href="/cart">Go to Cart</a>
+    </div>
+  <% } %>
+
+  <!-- 🔄 Script -->
+  <script src="/js/menuItems.js"></script>
+
+</body>
+</html>

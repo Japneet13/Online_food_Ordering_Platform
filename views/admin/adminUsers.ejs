@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registered Users | Admin</title>
+  <link rel="stylesheet" href="/css/adminUsers.css" />
+</head>
+<body>
+  <h1>👥 Registered Users</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.forEach(user => { %>
+        <tr>
+          <td data-label="User ID"><%= user.id %></td>
+          <td data-label="Name"><%= user.name %></td>
+          <td data-label="Email"><%= user.email %></td>
+          <td data-label="Status">
+            <% if (orderUserIds.includes(user.id)) { %>
+              <div class="status good">📦 Ordered</div>
+            <% } else { %>
+              <div class="status bad">❌ No Orders</div>
+            <% } %>
+
+            <% if (cartUserIds.includes(user.id)) { %>
+              <div class="status bad">🛒 Abandoned Cart</div>
+            <% } else { %>
+              <div class="status good">✅ No Cart Items</div>
+            <% } %>
+          </td>
+          <td data-label="Actions">
+            <% if (orderUserIds.includes(user.id)) { %>
+              <a href="/admin/user/<%= user.id %>/orders" class="btn">🧾 Orders</a>
+            <% } %>
+            <% if (cartUserIds.includes(user.id)) { %>
+              <a href="/admin/user/<%= user.id %>/cart" class="btn">🛒 Cart</a>
+            <% } %>
+            <a href="mailto:<%= user.email %>" class="btn">📧 Email</a>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>
