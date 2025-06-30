@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs'); 
-const db = require('../config/db');
+const db = require('../db');
 
 // POST Signup Logic
 exports.postSignup = async (req, res) => {
