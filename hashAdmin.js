@@ -1,5 +1,5 @@
 // hashAdmin.js
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const plainPassword = 'jk@13'; // you can change it
 const saltRounds = 10;
