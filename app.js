@@ -10,6 +10,13 @@ require('dotenv').config();
 
 const app = express();
 
+// DEBUG ROUTE — REMOVE AFTER USE
+app.get('/hash-admin', async (req, res) => {
+  const bcrypt = require('bcryptjs');
+  const hash = await bcrypt.hash('jk@13', 10);
+  res.send(`Hash: ${hash}`);
+});
+
 app.set('view engine', 'ejs');
 app.use(express.static('public'));app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));

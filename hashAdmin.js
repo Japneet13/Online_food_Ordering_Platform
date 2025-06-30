@@ -11,4 +11,3 @@ bcrypt.hash(plainPassword, saltRounds, (err, hash) => {
     console.log('Hashed password:', hash);
   }
 });
-$2b$10$utZ483Uaji2du8b.bjIPEOHITtKhzRsCaerX8/uNgPywM1fOlFzk6

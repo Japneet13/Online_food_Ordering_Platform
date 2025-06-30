@@ -1,3 +1,4 @@
+console.log("✅ Using bcryptjs library");
 const bcrypt = require('bcryptjs'); 
 const db = require('../db');
 
@@ -38,6 +39,7 @@ exports.postSignup = async (req, res) => {
 };
 
 exports.postLogin = async (req, res) => {
+  console.log("Using bcryptjs version:", bcrypt.version || 'unknown');
   const { email, password } = req.body;
 
   console.log("📥 Login attempt:", email);
